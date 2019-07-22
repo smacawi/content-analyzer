@@ -16,7 +16,7 @@ from allennlp.data.tokenizers import Tokenizer, WordTokenizer
 logger = logging.getLogger(__name__)
 
 
-@DatasetReader.register('crisis_nlp')
+@DatasetReader.register('icwsm')
 class CrisisNLPDatasetReader(DatasetReader):
     """
     Reads tsv dataset provided by CrisisNLP along "Graph Based Semi-supervised
