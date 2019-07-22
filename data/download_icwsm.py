@@ -4,7 +4,7 @@ from pathlib import Path
 
 """
 Script to download data used in "Graph Based Semi-supervised Learning with 
-Convolutional Neural Networks to Classify Crisis Related Tweets" (Alan, 2018).
+Convolutional Neural Networks to Classify Crisis Related Tweets" (Alam, 2018).
 """
 QUEENSLAND_NEPAL_URL = "https://crisisnlp.qcri.org/data/acl_icwsm_2018/ACL_ICWSM_2018_datasets.zip"
 DATA_PATH = Path(__file__).parent
