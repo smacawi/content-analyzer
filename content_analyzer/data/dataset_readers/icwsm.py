@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 
 
 @DatasetReader.register('icwsm')
-class CrisisNLPDatasetReader(DatasetReader):
+class IcwsmCrisisNLPDatasetReader(DatasetReader):
     """
     Reads tsv dataset provided by CrisisNLP along "Graph Based Semi-supervised
     Learning with Convolutional Neural Networks to Classify Crisis Related
