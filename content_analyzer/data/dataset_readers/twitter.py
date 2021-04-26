@@ -12,7 +12,7 @@ from allennlp.data.dataset_readers import DatasetReader
 from allennlp.data.fields import LabelField, TextField, Field
 from allennlp.data import Instance
 from allennlp.data.token_indexers import TokenIndexer, SingleIdTokenIndexer, PretrainedBertIndexer
-from allennlp.data.tokenizers import Tokenizer, WordTokenizer
+from allennlp.data.tokenizers import Tokenizer
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +26,7 @@ class TwitterNLPDatasetReader(DatasetReader):
                  text_col: str = 'text') -> None:
         super().__init__(lazy=lazy)
         self.text_col = text_col
-        self._tokenizer = tokenizer or WordTokenizer()
+        self._tokenizer = tokenizer or Tokenizer(type="word")
         self._token_indexers = token_indexers or {'tokens': SingleIdTokenIndexer()}
 
     @overrides

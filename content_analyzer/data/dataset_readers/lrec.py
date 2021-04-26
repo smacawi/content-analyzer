@@ -12,7 +12,7 @@ from allennlp.data.dataset_readers import DatasetReader
 from allennlp.data.fields import LabelField, TextField, Field
 from allennlp.data import Instance
 from allennlp.data.token_indexers import TokenIndexer, SingleIdTokenIndexer, PretrainedBertIndexer
-from allennlp.data.tokenizers import Tokenizer, WordTokenizer
+from allennlp.data.tokenizers import Tokenizer
 
 logger = logging.getLogger(__name__)
 
@@ -54,7 +54,7 @@ class LrecCrisisNLPDatasetReader(DatasetReader):
         self.test_events = test_events
         self.label_col = label_col
         self.text_col = text_col
-        self._tokenizer = tokenizer or WordTokenizer()
+        self._tokenizer = tokenizer or Tokenizer(type="word")
         self._token_indexers = token_indexers or {'tokens': SingleIdTokenIndexer()}
 
     @overrides
@@ -77,9 +77,10 @@ class LrecCrisisNLPDatasetReader(DatasetReader):
                 print("Invalid data:")
                 print(row)
     @overrides
-    def text_to_instance(self, text: str, label: str) -> Instance:
+    def text_to_instance(self, text: str, label: str = None) -> Instance:
         fields: Dict[str, Field] = {}
         tokens = self._tokenizer.tokenize(text)
         fields['tokens'] = TextField(tokens, self._token_indexers)
-        fields['label'] = LabelField(label)
+        if label:
+            fields['label'] = LabelField(label)
         return Instance(fields)
