@@ -1,2 +1,2 @@
-allennlp
+allennlp==1.1.0
 overrides
