@@ -9,7 +9,7 @@ Script to download data used in " Twitter as a Lifeline: Human-annotated Twitter
  Corpora for NLP of Crisis-related Messages" (Imran, 2016).
 """
 
-crowdflower = False
+crowdflower = True
 
 if crowdflower:
     CRISIS_NLP_URL = "https://crisisnlp.qcri.org/data/lrec2016/labeled_cf/CrisisNLP_labeled_data_crowdflower.zip"
