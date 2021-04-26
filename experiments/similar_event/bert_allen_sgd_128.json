@@ -1,0 +1,59 @@
+{
+    "dataset_reader": {
+        "type": "lrec",
+        "train_events": [
+            "2015_nepal_eq",
+            "2013_pak_eq",
+            "2014_cali_eq",
+            "2014_chile_eq",
+            "2014_odile",
+            "2014_india_floods",
+            "2014_hagupit",
+            "2015_pam",
+            "2014_pak_floods"
+        ],
+        "test_events": [
+            "2014_pak_floods"
+        ],
+        "token_indexers": {
+            "bert": {
+                "type": "bert-pretrained",
+                "pretrained_model": "bert-base-uncased"
+            }
+        },
+        "tokenizer": {
+            "type": "word"
+        }
+    },
+    "train_data_path": "train",
+    "validation_data_path": "test",
+    "evaluate_on_test": false,
+    "model": {
+        "type": "bert_classification",
+        "bert_model": "bert-base-uncased",
+        "dropout": 0.1,
+        "num_labels": 9
+    },
+    "iterator": {
+        "type": "bucket",
+        "sorting_keys": [
+            [
+                "tokens",
+                "num_tokens"
+            ]
+        ],
+        "batch_size": 4
+    },
+    "trainer": {
+        "num_epochs": 20,
+        "grad_norm": 1.0,
+        "num_serialized_models_to_keep": 1,
+        "validation_metric": "+accuracy",
+        "cuda_device": 0,
+        "optimizer": {
+            "type": "sgd",
+            "lr": 2e-05
+        },
+        "num_gradient_accumulation_steps": 128
+    }
+}
